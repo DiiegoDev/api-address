@@ -1,11 +1,13 @@
 package com.address_api.address_api.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.util.UUID;
 
 @Table(name = "address")
 @Entity
+@Getter
 public class Address {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
