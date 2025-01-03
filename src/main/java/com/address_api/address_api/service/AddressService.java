@@ -48,4 +48,12 @@ public class AddressService {
 
     return "Endereço atualizado!!";
   }
+
+  public String delete(UUID id) {
+    Optional<Address> address = this.addressRepository.findById(id);
+
+    if(address.isPresent()) this.addressRepository.deleteById(id);
+
+    return "Endereço apagado!!";
+  }
 }
