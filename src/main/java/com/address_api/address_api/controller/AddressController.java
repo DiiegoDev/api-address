@@ -20,15 +20,16 @@ public class AddressController {
 
   @PostMapping
   public ResponseEntity<String> saveAddress(@RequestBody AddressDTO request) {
-    Address address = new Address.Builder()
-        .setCountry(request.country())
-        .setState(request.state())
-        .setCity(request.city())
-        .setNeighborhood(request.neighborhood())
-        .setPostalCode(request.postalCode())
-        .setStreet(request.street())
-        .setNumber(request.number())
-        .build();
+    Address address = new Address(
+        UUID.randomUUID(),
+        request.country(),
+        request.state(),
+        request.city(),
+        request.neighborhood(),
+        request.postalCode(),
+        request.street(),
+        request.number()
+    );
 
     return ResponseEntity.ok(this.addressService.save(address));
   }
