@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/address")
@@ -36,5 +37,10 @@ public class AddressController {
   public ResponseEntity<List<Address>> findAll() {
     System.out.println(this.addressService.findAll());
     return ResponseEntity.ok(this.addressService.findAll());
+  }
+
+  @PutMapping("/{id}")
+  public ResponseEntity<String> update(@RequestBody AddressDTO request, @PathVariable("id") UUID id) {
+    return ResponseEntity.ok(this.addressService.update(request, id));
   }
 }
