@@ -44,4 +44,9 @@ public class AddressController {
   public ResponseEntity<String> update(@RequestBody AddressDTO request, @PathVariable("id") UUID id) {
     return ResponseEntity.ok(this.addressService.update(request, id));
   }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<String> delete(@PathVariable("id") UUID id) {
+    return ResponseEntity.ok(this.addressService.delete(id));
+  }
 }
