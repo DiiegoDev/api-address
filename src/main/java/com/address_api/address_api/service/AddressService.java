@@ -19,10 +19,9 @@ public class AddressService {
     this.addressRepository = addressRepository;
   }
 
-  public String save(Address address) {
-    this.addressRepository.save(address);
+  public Address save(Address address) {
 
-    return "Endereço salvo!!";
+    return this.addressRepository.save(address);
   }
 
   public List<Address> findAll() {
@@ -31,33 +30,31 @@ public class AddressService {
     return addressList;
   }
 
-  public String update(AddressDTO request, UUID id) {
+  public Address update(AddressDTO request, UUID id) {
     Optional<Address> existingAddress = this.addressRepository.findById(id);
 
     if(existingAddress.isEmpty()) throw new AddressNotFound();
 
     Address address = existingAddress.get();
 
-    if(request.country() != null) address.setCountry(request.country());
-    if(request.state() != null) address.setState(request.state());
-    if(request.city() != null) address.setCity(request.city());
-    if(request.neighborhood() != null) address.setNeighborhood(request.neighborhood());
-    if(request.postalCode() != null) address.setPostalCode(request.postalCode());
-    if(request.street() != null) address.setStreet(request.street());
-    if(request.number() != null) address.setNumber(request.number());
+    if(request.getCountry() != null) address.setCountry(request.getCountry());
+    if(request.getState() != null) address.setState(request.getState());
+    if(request.getCity() != null) address.setCity(request.getCity());
+    if(request.getNeighborhood() != null) address.setNeighborhood(request.getNeighborhood());
+    if(request.getPostalCode() != null) address.setPostalCode(request.getPostalCode());
+    if(request.getStreet() != null) address.setStreet(request.getStreet());
+    if(request.getNumber() != null) address.setNumber(request.getNumber());
 
-    this.addressRepository.save(address);
-
-    return "Endereço atualizado!!";
+    return this.addressRepository.save(address);
   }
 
-  public String delete(UUID id) {
+  public Boolean delete(UUID id) {
     Optional<Address> address = this.addressRepository.findById(id);
 
     if(address.isEmpty()) throw new AddressNotFound();
 
     this.addressRepository.deleteById(id);
 
-    return "Endereço apagado!!";
+    return true;
   }
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Table(name = "address")
-@Entity
+@Entity(name = "address")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -24,8 +24,17 @@ public class Address {
   String street;
   Integer number;
 
-  public Address() {}
+  public Address(String country, String state, String city, String neighborhood, String postalCode, String street, Integer number) {
+    this.country = country;
+    this.state = state;
+    this.city = city;
+    this.neighborhood = neighborhood;
+    this.postalCode = postalCode;
+    this.street = street;
+    this.number = number;
+  }
 
+  public Address() {}
 
   @Override
   public String toString() {
