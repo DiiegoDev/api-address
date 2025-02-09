@@ -92,6 +92,8 @@ Resposta:
 
 ## Estrutura do Projeto
 - src/main/java: Contém o código fonte da aplicação.
+ 
+- src/test/java: Contém os testes unitários.
 
 - src/main/resources: Contém arquivos de configuração e propriedades.
 
